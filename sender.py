@@ -1,25 +1,29 @@
 import socket
+import os
+import struct
+from sys import argv
+
+import socket
 
 
-def client_program():
-    host = socket.gethostname()  # as both code is running on same pc
-    port = 5032 # socket server port number
-
-    client_socket = socket.socket()  # instantiate
-    client_socket.connect((host, port))  # connect to the server
-
-    message = input(" -> ")  # take input
-
-    while message.lower().strip() != 'bye':
-        client_socket.send(message.encode())  # send message
-        data = client_socket.recv(4021).decode()  # receive response
-
-        print('Received from server: ' + data)  # show in terminal
-
-        message = input(" -> ")  # again take input
-
-    client_socket.close()  # close the connection
-
-
-if __name__ == '__main__':
-    client_program()
+recv_ip = "127.0.0.1"
+recv_port = 4096
+s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM)
+while 1:
+	while 1:
+		msg = b'i am a man'
+		if len(msg)>150:
+			print("Message length exceeded ")
+		else :
+			break
+	s.sendto(msg,(recv_ip,recv_port))
+	if msg=='exit':
+		s.close()
+		break
+	data=s.recvfrom(150)
+	if str(data[0]) == 'exit':
+		print("EXIT")
+		s.close()
+		break
+	else:		
+		print("RECEIVED PACKET: "+str(data[0]))
