@@ -21,12 +21,12 @@ sock.listen(2)
 
 ### Contents of pages we will serve.
 # Login form
-login_form = f"""
-   <form action = "http://${host_name}:${port}" method = "post">
+login_form = f'''
+   <form action = "http://{host_name}:{port}" method = "post">
    Name: <input type = "text" name = "username">  <br/>
    Password: <input type = "text" name = "password" /> <br/>
    <input type = "submit" value = "Submit" />
-   </form>"""
+   </form>'''
 # Default: Login page.
 login_page = "<h1>Please login</h1>" + login_form
 # Error page for bad credentials
