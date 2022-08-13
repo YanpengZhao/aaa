@@ -21,12 +21,12 @@ sock.listen(2)
 
 ### Contents of pages we will serve.
 # Login form
-login_form = '''
+login_form = f"""
    <form action = "http://{host_name}:{port}" method = "post">
    Name: <input type = "text" name = "username">  <br/>
    Password: <input type = "text" name = "password" /> <br/>
    <input type = "submit" value = "Submit" />
-   </form>'''
+   </form>"""
 # Default: Login page.
 login_page = "<h1>Please login</h1>" + login_form
 # Error page for bad credentials
@@ -35,7 +35,7 @@ bad_creds_page = "<h1>Bad user/pass! Try again</h1>" + login_form
 logout_page = "<h1>Logged out successfully</h1>" + login_form
 # A part of the page that will be displayed after successful
 # login or the presentation of a valid cookie
-success_page = '''
+success_page = f"""
    <h1>Welcome!</h1>
    <form action="http://{host_name}:{port}" method = "post">
    <input type = "hidden" name = "action" value = "logout" />
@@ -43,7 +43,7 @@ success_page = '''
    </form>
    <br/><br/>
    <h1>Your secret data is here:</h1>
-'''
+"""
 #makes a new cookie header, returns two values
 #you can call it like this:
 # number, header = make_new_cookie_header()
