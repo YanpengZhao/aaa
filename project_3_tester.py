@@ -20,7 +20,7 @@ READ_DEST = True
 # print(req.text)
 def get_current_page(verbose=VERBOSE):
 	with requests.Session() as s:
-		url = f'http://{host_name}:{PORT}/'
+		url = '''http://{host_name}:{PORT}/'''
 		req = s.get(url)
 	if verbose:
 		print(req.text)
@@ -59,7 +59,7 @@ def post_with_username_pass(username, password, verbose=VERBOSE, clear_cookies=T
 			print(response.text)
 		if get_cookies:
 			if verbose:
-				print(f'cookies {s.cookies}')
+				print('''cookies {s.cookies}''')
 			return response, dict(s.cookies)
 		return response
 def extract_secret(http, verbose=VERBOSE):
