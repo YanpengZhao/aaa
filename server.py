@@ -35,7 +35,7 @@ bad_creds_page = "<h1>Bad user/pass! Try again</h1>" + login_form
 logout_page = "<h1>Logged out successfully</h1>" + login_form
 # A part of the page that will be displayed after successful
 # login or the presentation of a valid cookie
-success_page = f"""
+success_page = '''
    <h1>Welcome!</h1>
    <form action="http://{host_name}:{port}" method = "post">
    <input type = "hidden" name = "action" value = "logout" />
@@ -43,7 +43,7 @@ success_page = f"""
    </form>
    <br/><br/>
    <h1>Your secret data is here:</h1>
-"""
+'''
 #makes a new cookie header, returns two values
 #you can call it like this:
 # number, header = make_new_cookie_header()
