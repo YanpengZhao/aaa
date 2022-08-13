@@ -21,7 +21,7 @@ sock.listen(2)
 
 ### Contents of pages we will serve.
 # Login form
-login_form = f'''
+login_form = '''
    <form action = "http://{host_name}:{port}" method = "post">
    Name: <input type = "text" name = "username">  <br/>
    Password: <input type = "text" name = "password" /> <br/>
