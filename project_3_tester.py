@@ -152,4 +152,4 @@ page = post_with_username_pass('naiveuser', 'wrong_password',cookies=cookies)
 message = extract_message(page)
 passes, failures = evaluate_test(secret.strip() == 'kaching', passes, failures)
 
-print(f'failures: {failures} passes: {passes}')
+print('''failures: {failures} passes: {passes}''')
