@@ -20,7 +20,7 @@ READ_DEST = True
 # print(req.text)
 def get_current_page(verbose=VERBOSE):
 	with requests.Session() as s:
-		url = '''http://{host_name}:{PORT}/'''
+		url = f'http://{host_name}:{PORT}/'
 		req = s.get(url)
 	if verbose:
 		print(req.text)
@@ -28,7 +28,7 @@ def get_current_page(verbose=VERBOSE):
 def post_with_username_pass(username, password, verbose=VERBOSE, clear_cookies=True, get_cookies=False, cookies={}, logout=False):
 	global READ_DEST
 	with requests.Session() as s:
-		url = '''http://{host_name}:{PORT}/'''
+		url = f'http://{host_name}:{PORT}/'
 		req = s.get(url)
 		if READ_DEST:
 			soup = BeautifulSoup(req.text, 'html.parser')
@@ -59,7 +59,7 @@ def post_with_username_pass(username, password, verbose=VERBOSE, clear_cookies=T
 			print(response.text)
 		if get_cookies:
 			if verbose:
-				print('''cookies {s.cookies}''')
+				print(f'cookies {s.cookies}')
 			return response, dict(s.cookies)
 		return response
 def extract_secret(http, verbose=VERBOSE):
@@ -74,7 +74,7 @@ def extract_message(http, verbose=VERBOSE):
 	soup = BeautifulSoup(http.text, 'html.parser')
 	message = soup.get_text('\n').strip().split('\n')[0]
 	if verbose:
-		print('''message is {message}''')
+		print(f'message is {message}')
 	return message
 def evaluate_test(condition, passes, failures):
 	if condition:
@@ -152,4 +152,4 @@ page = post_with_username_pass('naiveuser', 'wrong_password',cookies=cookies)
 message = extract_message(page)
 passes, failures = evaluate_test(secret.strip() == 'kaching', passes, failures)
 
-print('''failures: {failures} passes: {passes}''')
+print(f'failures: {failures} passes: {passes}')
