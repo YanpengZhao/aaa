@@ -28,7 +28,7 @@ def get_current_page(verbose=VERBOSE):
 def post_with_username_pass(username, password, verbose=VERBOSE, clear_cookies=True, get_cookies=False, cookies={}, logout=False):
 	global READ_DEST
 	with requests.Session() as s:
-		url = f'http://{host_name}:{PORT}/'
+		url = '''http://{host_name}:{PORT}/'''
 		req = s.get(url)
 		if READ_DEST:
 			soup = BeautifulSoup(req.text, 'html.parser')
@@ -74,7 +74,7 @@ def extract_message(http, verbose=VERBOSE):
 	soup = BeautifulSoup(http.text, 'html.parser')
 	message = soup.get_text('\n').strip().split('\n')[0]
 	if verbose:
-		print(f'message is {message}')
+		print('''message is {message}''')
 	return message
 def evaluate_test(condition, passes, failures):
 	if condition:
